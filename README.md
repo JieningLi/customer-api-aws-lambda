@@ -1,4 +1,4 @@
-# Build a serverless RESTful customer API with Node.js and AWS lambda
+# Build a serverless RESTful customer API with Node.js and AWS Lambda
 
 This project demonstrates how to setup a RESTful Web Services allowing you to create, list, get, update and delete customers. DynamoDB is used to store the data.
 
@@ -28,7 +28,7 @@ DELETE - your.domain.name/dev/customers/{id}
 
 - Deploy: `serverless deploy`
 
-  (You will need to configure the serverless CLI with your AWS credentials; please follow [these instructions](https://www.youtube.com/watch?v=HSd9uYj2LJA))
+  (You will need to configure the serverless CLI with your AWS credentials; please follow [this instruction](https://www.youtube.com/watch?v=HSd9uYj2LJA))
 
 ## Run test
 
