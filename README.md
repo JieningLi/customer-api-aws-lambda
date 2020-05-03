@@ -1,6 +1,6 @@
-# cummins_customer_api
+# Build a serverless RESTful API with node js and AWS lambda
 
-REST API for customer management, built with the Serverless framework.
+This project demonstrates how to setup a RESTful Web Services allowing you to create, list, get, update and delete customers. DynamoDB is used to store the data.
 
 ## Prerequisites
 
@@ -9,30 +9,31 @@ REST API for customer management, built with the Serverless framework.
 
 ## Built With
 
-- [the serverless framework](https://serverless.com/) - CLI tool for building serverless apps
-- [AWS Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) - serverless cloud provider
+- [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) - serverless cloud provider
 - [Node.js](nodejs.org)
-
-## Getting Started
-
-1. Install the serverless framework: `npm install -g serverless`
-2. Deploy: `serverless deploy`
-   (You will need to configure the serverless CLI with your AWS credentials; follow [these instructions](https://www.youtube.com/watch?v=HSd9uYj2LJA))
 
 ## Endpoints
 
-POST - https://rpldlnzlfh.execute-api.us-east-1.amazonaws.com/dev/customers
+POST - /dev/customers
 
-GET - https://rpldlnzlfh.execute-api.us-east-1.amazonaws.com/dev/customers
+GET - /dev/customers
 
-GET - https://rpldlnzlfh.execute-api.us-east-1.amazonaws.com/dev/customers/{id}
+GET - /dev/customers/{id}
 
-DELETE - https://rpldlnzlfh.execute-api.us-east-1.amazonaws.com/dev/customers/{id}
+DELETE - dev/customers/{id}
 
-## Run Tests
+## Run project
+
+- Install the serverless framework: `npm install -g serverless`
+
+- Deploy: `serverless deploy`
+
+(You will need to configure the serverless CLI with your AWS credentials; please follow [these instructions](https://www.youtube.com/watch?v=HSd9uYj2LJA))
+
+## Run test
 
 Before you can run tests, you need to set the CUSTOMERS_ENDPOINT environment variable to the value of the domain name returned when you deployed your service. Using values from the example above:
 
-\$ > export CUSTOMERS_ENDPOINT=rpldlnzlfh.execute-api.us-east-1.amazonaws.com/dev
+- `export CUSTOMERS_ENDPOINT=you.domain.name/dev`
 
-\$ > npm test
+- `npm test`
