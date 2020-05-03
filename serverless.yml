@@ -1,0 +1,65 @@
+service: customers
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:dynamodb:*:*:table/"
+            - Ref: CustomersDynamoDbTable
+
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          path: customers
+          method: post
+          cors: true
+  list:
+    handler: handler.list
+    events:
+      - http:
+          path: customers
+          method: get
+          cors: true
+  view:
+    handler: handler.view
+    events:
+      - http:
+          path: customers/{id}
+          method: get
+          cors: true
+  remove:
+    handler: handler.remove
+    events:
+      - http:
+          path: customers/{id}
+          method: delete
+          cors: true
+
+resources:
+  Resources:
+    CustomersDynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: customers
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
